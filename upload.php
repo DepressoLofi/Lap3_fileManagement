@@ -25,27 +25,27 @@ if (!in_array($imageFileType, $allowedTypes)) {
   $uploadOk = 0;
 }
 
- // Move the uploaded file to the target directory and save metadata to the database if no errors occurred
+// Move the uploaded file to the target directory and save metadata to the database if no errors occurred
 if ($uploadOk == 1) {
-    $sourceFile = $_FILES["fileToUpload"]["tmp_name"];
-    if (move_uploaded_file($sourceFile, $target_file)) {
-      $filename = basename($_FILES["fileToUpload"]["name"]);
-      $size = $_FILES["fileToUpload"]["size"];
-      $uploadDate = date("Y-m-d H:i:s");
-  
-      // Insert file metadata into the database
-      $sql = "INSERT INTO files (filename, size, upload_date) VALUES ('$filename', $size, '$uploadDate')";
-      if (mysqli_query($conn, $sql)) {
-        echo "The file " . $filename . " has been uploaded successfully.";
-      } else {
-        echo "Error uploading file: " . mysqli_error($conn);
-      }
+  $sourceFile = $_FILES["fileToUpload"]["tmp_name"];
+  if (move_uploaded_file($sourceFile, $target_file)) {
+    $filename = basename($_FILES["fileToUpload"]["name"]);
+    $size = $_FILES["fileToUpload"]["size"];
+    $uploadDate = date("Y-m-d H:i:s");
+
+    // Insert file metadata into the database
+    $sql = "INSERT INTO files (filename, size, upload_date) VALUES ('$filename', $size, '$uploadDate')";
+    if (mysqli_query($conn, $sql)) {
+      echo "The file " . $filename . " has been uploaded successfully.";
     } else {
-      echo "Sorry, there was an error uploading your file.";
+      echo "Error uploading file: " . mysqli_error($conn);
     }
+  } else {
+    echo "Sorry, there was an error uploading your file.";
   }
-  
-  ?>
+}
+
+?>
   
   
   

@@ -14,9 +14,8 @@ if (isset($_GET['id'])) {
     $filename = $file['filename'];
     $filepath = "uploads/" . $filename;
 
-    
+
     if (unlink($filepath)) {
-     
       $deleteSql = "DELETE FROM files WHERE id = $fileId";
       if (mysqli_query($conn, $deleteSql)) {
         echo "The file " . $filename . " has been deleted successfully.";
@@ -30,4 +29,3 @@ if (isset($_GET['id'])) {
     echo "File not found.";
   }
 }
-?>
