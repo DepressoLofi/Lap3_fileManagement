@@ -1,27 +1,34 @@
-
 <?php
 require_once('connect.php');
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+// Check if a file is selected
+if (isset($_FILES["fileToUpload"])) {
+  $file = $_FILES["fileToUpload"];
+  
+  if ($file["error"] === UPLOAD_ERR_OK) {
+    // Proceed with the upload
+    if ($_FILES["fileToUpload"]["size"] > 0) {
+      echo "File uploaded successfully!";
+      // Your code for handling the uploaded file
+    } else {
+      echo "Sorry, the uploaded file is empty.";
+      $uploadOk = 0;
+    }
+  } else {
+    echo "Error uploading file.";
+    $uploadOk = 0;
+  }
+} else {
+  echo "Please select a file.";
+  $uploadOk = 0;
+}
 
 // Check if file already exists
-if (file_exists($target_file)) {
+if ($uploadOk == 1 && file_exists($target_file)) {
   echo "Sorry, file already exists.";
-  $uploadOk = 0;
-}
-
-// Check if the uploaded file is empty
-if ($_FILES["fileToUpload"]["size"] <= 0) {
-  echo "Sorry, the uploaded file is empty.";
-  $uploadOk = 0;
-}
-
-// Allow only specific file types
-$allowedTypes = array('jpg', 'jpeg', 'png', 'gif');
-if (!in_array($imageFileType, $allowedTypes)) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
   $uploadOk = 0;
 }
 
@@ -43,10 +50,4 @@ if ($uploadOk == 1) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
-
 ?>
-  
-  
-  
-  
-  
