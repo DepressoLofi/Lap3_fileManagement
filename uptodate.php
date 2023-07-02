@@ -7,9 +7,12 @@ mysqli_query($conn, $clearSql);
 $folderPath = "C:/xampp/htdocs/Lap3_fileManagement/Uploads";
 
 $categories = [
-    'images' => ['jpg', 'jpeg', 'png', 'gif'],
-    'documents' => ['pdf', 'doc', 'docx', 'txt'],
-    'videos' => ['mp4', 'avi', 'mov'],
+    'Image' => ['jpg', 'jpeg', 'png', 'gif'],
+    'Document' => ['pdf', 'doc', 'docx', 'txt'],
+    'Video' => ['mp4', 'avi', 'mov'],
+    'Audio'=> ['mp3' , 'wav' , 'm4a' ,  'wma'],
+    'Unknown' => ['max' , 'obj' ,  '3dm'],
+    'Web files' => ['asp' , 'aspx', 'html' , 'php'],
 ];
 
 $files = scandir($folderPath);

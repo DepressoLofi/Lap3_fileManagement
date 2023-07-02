@@ -3,9 +3,12 @@ require_once('connect.php');
 $folderPath = "C:/xampp/htdocs/Lap3_fileManagement/Uploads";
 
 $categories = [
-    'images' => ['jpg', 'jpeg', 'png', 'gif'],
-    'documents' => ['pdf', 'doc', 'docx', 'txt'],
-    'videos' => ['mp4', 'avi', 'mov'],
+    'image' => ['jpg', 'jpeg', 'png', 'gif'],
+    'document' => ['pdf', 'doc', 'docx', 'txt'],
+    'video' => ['mp4', 'avi', 'mov'],
+    'Audio'=> ['mp3' , 'wav' , 'm4a' ,  'wma']
+    'Unknown' => ['max' , 'obj' ,  '3dm']
+    'Web files' => ['asp' , 'aspx', 'html' , 'php']
 ];
 
 foreach ($categories as $category => $extensions) {
