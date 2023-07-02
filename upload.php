@@ -12,6 +12,13 @@ if (isset($_FILES["fileToUpload"])) {
     // Proceed with the upload
     if ($_FILES["fileToUpload"]["size"] > 0) {
       echo "File uploaded successfully!";
+
+       // Display file preview
+       echo "<br>";
+       echo "File Preview:";
+       echo "<br>";
+       echo "<iframe src=\"preview.php?file=$target_file\"></iframe>";
+
       // Your code for handling the uploaded file
     } else {
       echo "Sorry, the uploaded file is empty.";
@@ -31,7 +38,6 @@ if ($uploadOk == 1 && file_exists($target_file)) {
   echo "Sorry, file already exists.";
   $uploadOk = 0;
 }
-
 // Move the uploaded file to the target directory and save metadata to the database if no errors occurred
 if ($uploadOk == 1) {
   $sourceFile = $_FILES["fileToUpload"]["tmp_name"];
