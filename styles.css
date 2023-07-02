@@ -1,12 +1,29 @@
+.custom-file-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.upload-status {
+    min-height: 50px;
+}
 
 .tableFixHead {
     overflow: auto;
-    height: 590px;
+    height: 500px;
 }
 
 .tableFixHead thead th {
     position: sticky;
     top: 0;
     z-index: 1;
+}
+
+.tableFixHead::-webkit-scrollbar {
+    display: none;
+}
+
+h1, h2 {
+    color: rgb(138, 113, 48);
 }
 

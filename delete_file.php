@@ -16,12 +16,7 @@ if (isset($_GET['id'])) {
 
 
     if (unlink($filepath)) {
-      $deleteSql = "DELETE FROM files WHERE id = $fileId";
-      if (mysqli_query($conn, $deleteSql)) {
-        echo "The file " . $filename . " has been deleted successfully.";
-      } else {
-        echo "Error deleting file: " . mysqli_error($conn);
-      }
+      header('location:index.php');
     } else {
       echo "There was an error deleting the file.";
     }

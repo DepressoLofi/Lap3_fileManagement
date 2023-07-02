@@ -13,9 +13,9 @@ if (mysqli_num_rows($result) > 0) {
         } elseif ($row["size"] >= 1000000) {
             $filesize /= 1000000;
             $fsize = round($filesize, 1) . ' mb';
-        }
+        }  // file size unit 
         echo "<tr>";
-        echo "<td>" . $row["filename"] . "</td>";
+        echo "<td><a href='previewpage.php?name=$row[filename]'>" . $row["filename"] . "</a></td>";
         echo "<td>" . $fsize . "</td>";
         echo "<td>" . $row["category"] . "</td>"; // Add the Category column
         echo "<td>
