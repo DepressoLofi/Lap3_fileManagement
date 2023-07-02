@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <?php require("uptodate.php") ?>
+
+
     <div class="container">
         <div class="upload-container">
             <h2>Upload a File</h2>
@@ -25,21 +28,31 @@
 
 
 
-    <div class="delete-container">
-        <h2>Delete Files</h2>
 
-        <table class='table table-striped'>
-            <thead>
-                <tr>
-                    <th>File Name</th>
-                    <th>Size</th>
-                    <th>Upload Date</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <?php require_once('file_list.php') ?>
+    <div class="list-container">
+
+        <h2 class="mx-5">List of Files</h2>
+
+
+        <div class="tableFixHead">
+
+
+            <table class='table table-striped'>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>File Name</th>
+                        <th>Size</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+        </div>
+        <?php require_once('file_list.php') ?>
+        </table>
 
     </div>
+
+
 
 
 

@@ -19,7 +19,6 @@ if (mysqli_num_rows($result) > 0) {
     echo "<tr>";
     echo "<td>" . $row["filename"] . "</td>";
     echo "<td>" . $fsize . "</td>";
-    echo "<td>" . $row["upload_date"] . "</td>";
     echo "<td>
     <a href='Uploads/" . $row["filename"] . "' class='btn btn-success' download> Download</a> 
     <a href='delete_file.php?id=$row[id]' onclick='return confirm(\"Are you sure you want to delete this file?\")' class='btn btn-danger'>Delete</a> 
@@ -27,7 +26,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "</tr>";
   }
   echo "</tbody>
-        </table>";
+        ";
 } else {
   echo "<p>No files found.</p>";
 }

@@ -31,10 +31,9 @@ if ($uploadOk == 1) {
   if (move_uploaded_file($sourceFile, $target_file)) {
     $filename = basename($_FILES["fileToUpload"]["name"]);
     $size = $_FILES["fileToUpload"]["size"];
-    $uploadDate = date("Y-m-d H:i:s");
 
     // Insert file metadata into the database
-    $sql = "INSERT INTO files (filename, size, upload_date) VALUES ('$filename', $size, '$uploadDate')";
+    $sql = "INSERT INTO files (filename, size) VALUES ('$filename', $size)";
     if (mysqli_query($conn, $sql)) {
       echo "The file " . $filename . " has been uploaded successfully.";
     } else {
