@@ -1,5 +1,31 @@
 <?php
 require_once('connect.php');
+$folderPath = "C:/xampp/htdocs/Lap3_fileManagement/Uploads";
+
+$categories = [
+    'images' => ['jpg', 'jpeg', 'png', 'gif'],
+    'documents' => ['pdf', 'doc', 'docx', 'txt'],
+    'videos' => ['mp4', 'avi', 'mov'],
+];
+
+foreach ($categories as $category => $extensions) {
+    $categoryPath = $folderPath . '/' . $category;
+    if (!is_dir($categoryPath)) {
+        mkdir($categoryPath);
+    }
+
+    foreach ($extensions as $extension) {
+        $files = glob($folderPath . '/*.' . $extension);
+
+        foreach ($files as $file) {
+            $newFilePath = $categoryPath . '/' . basename($file);
+            rename($file, $newFilePath);
+        }
+    }
+}
+
+
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;

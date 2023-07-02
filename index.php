@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html>
+
 
 <head>
     <title>File Upload</title>
@@ -42,6 +42,7 @@
                     <tr>
                         <th>File Name</th>
                         <th>Size</th>
+                        <th>Category</th>
                         <th>Action</th>
                     </tr>
                 </thead>
