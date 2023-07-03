@@ -1,12 +1,22 @@
 <?php
 require_once('connect.php');
-$sql = "SELECT * FROM files";
+if (isset($_GET['searchName'])) {
+    $search = $_GET['searchName'];
+    $sql = "SELECT * FROM files WHERE filename LIKE '%$search%'";
+} else {
+    $sql = "SELECT * FROM files";
+}
+
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     echo "<tbody>";
     while ($row = mysqli_fetch_assoc($result)) {
         $filesize = $row["size"];
+        $fsize = "";
+        if ($row["size"] < 1024) {
+            $fsize = 1 . "kb";
+        }
         if (1024 <= $row["size"] && $row["size"] <= 1000000) {
             $filesize /= 1024;
             $fsize = round($filesize, 1) . ' kb';
@@ -26,5 +36,5 @@ if (mysqli_num_rows($result) > 0) {
     }
     echo "</tbody>";
 } else {
-    echo "<p>No files found.</p>";
+    echo "<tr><td colspan=\"4\"><p>No files found.</p></td></tr>";
 }
